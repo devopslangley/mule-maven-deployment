@@ -3,12 +3,15 @@ pipeline {
   stages {
     stage('Unit Test') {
       steps {
-        sh 'mvn clean test'
+        echo "skipping"
+
       }
     }
     stage('Deploy Standalone') {
       steps {
+                
         sh 'mvn deploy -P standalone'
+        sh 'mvn clean test'
       }
     }
     stage('Deploy ARM') {
